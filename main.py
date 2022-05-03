@@ -1,20 +1,19 @@
-from __future__ import print_function
-import sys
-import spotipy
-import spotipy.util as util
-import json
-from datetime import date, datetime
-from time import sleep
-
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+import os
 
-scope = "user-library-read"
+CLIENT_ID = os.getenv("MORNING_PODCAST_CLIENT_ID")
+CLIENT_SECRET = os.getenv("MORNING_PODCAST_CLIENT_SECRET")
+CLIENT_URI = os.getenv("MORNING_PODCAST_REDIRECT_URI")
+SCOPE = 'playlist-modify-private playlist-modify-public'
 
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
 
-results = sp.current_user_saved_tracks()
-for idx, item in enumerate(results['items']):
-    track = item['track']
-    print(idx, track['artists'][0]['name'], " – ", track['name'])
+sp = spotipy.Spotify(
+    auth_manager=SpotifyOAuth(
+        client_id=CLIENT_ID,
+        client_secret=CLIENT_SECRET,
+        redirect_uri=CLIENT_URI,
+        scope=SCOPE))
 
+
+sp.user_playlist_create('1184475550', "test")
