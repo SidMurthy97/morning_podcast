@@ -32,17 +32,20 @@ sp = spotipy.Spotify(
     # sp.playlist_add_items(playlist_id,podcasts_to_add)
 
 '''TODO: decide on list of episodes to add
-TODO: write function to update the playlist rather than create it each day
-TODO: Abstract episde to show level, such that the most recent episode URI can
-be got each morning.'''
+TODO: virtual enviroment and update requirements.txt'''
 
 
 playlist_uri = 'spotify:playlist:49bH2WkTveKn9JYAjBNyfJ'
-show_uris = ['spotify:show:5CHMS8JT6vz45eRq1cGY0t'] 
+show_uris = [
+    'spotify:show:2qZ0xpaBBwf3bTYhA10KZY', #daily briefing  
+    'spotify:show:29eeC2kUEpYkDIYO4Bj0Qr' #tech briefing
+    ] 
+
+
 latest_episode_uri = [] #store list of all uris
 for uri in show_uris:
     latest_episode = sp.show_episodes(uri,limit=1)
     latest_episode_uri.append(latest_episode['items'][0]['uri'])
 
 
-sp.playlist_add_items(playlist_uri, latest_episode_uri)
+sp.playlist_replace_items(playlist_uri, latest_episode_uri)
