@@ -48,6 +48,8 @@ for uri in compulsary_show_uris:
 
 print(latest_episode_uri)
 
+#TODO: assign priority and iterate through played playlists. Maybe hold a dictionary?
+
 for uri in optional_show_uris:
     latest_episode = sp.show_episodes(uri,limit=1)
 
