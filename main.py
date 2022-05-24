@@ -33,7 +33,11 @@ compulsary_show_uris = [
 optional_show_uris = [
     'spotify:show:3sVMOI29n5oyMgbUxFz0p3', #more or less 
     'spotify:show:1410RabA4XOqO6IV8p0gYF', #FT news briefing 
-    'spotify:show:0hKmFWuxDIlm5IhVICVqWA' #sensemaker 
+    'spotify:show:0hKmFWuxDIlm5IhVICVqWA', #sensemaker 
+    'spotify:show:1wr9Zby7ON9HUPoIyTcVEG', #Guardian science weekly 
+    'spotify:show:6BXzjkwKxPNAmzVYNZvBTu', #talkSport
+    'spotify:show:5zDCsEAvMp61OZOt0CaPS8', #economist news briefing
+    'spotify:show:4cnNmAcLfid4aAvvWDnS94' #daily lowdown
 ]
 
 #get tracks and update playlist
