@@ -3,11 +3,13 @@ from spotipy.oauth2 import SpotifyOAuth
 import os
 import pprint
 import random
+from dotenv import load_dotenv
 
-CLIENT_ID = os.getenv("MORNING_PODCAST_CLIENT_ID")
-CLIENT_SECRET = os.getenv("MORNING_PODCAST_CLIENT_SECRET")
-CLIENT_URI = os.getenv("MORNING_PODCAST_REDIRECT_URI")
-SCOPE = 'playlist-modify-private playlist-modify-public'
+load_dotenv()
+CLIENT_ID = os.getenv('CLIENT_ID')
+CLIENT_SECRET = os.getenv('CLIENT_SECRET')
+CLIENT_URI = os.getenv('CLIENT_URI')
+SCOPE = os.getenv('SCOPE')
 
 usernames = ['1184475550']
 
@@ -31,6 +33,7 @@ compulsary_show_uris = [
 
 #optional shows in a random order
 optional_show_uris = [
+    'spotify:show:51MrXc7hJQBE2WJf2g4aWN' #WSJ briefing 
     'spotify:show:3sVMOI29n5oyMgbUxFz0p3', #more or less 
     'spotify:show:1410RabA4XOqO6IV8p0gYF', #FT news briefing 
     'spotify:show:0hKmFWuxDIlm5IhVICVqWA', #sensemaker 
