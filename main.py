@@ -49,10 +49,6 @@ for uri in compulsary_show_uris:
     latest_episode = sp.show_episodes(uri,limit=1)
     latest_episode_uri.append(latest_episode['items'][0]['uri'])
 
-print(latest_episode_uri)
-
-#TODO: assign priority and iterate through played playlists. Maybe hold a dictionary?
-
 for uri in optional_show_uris:
     latest_episode = sp.show_episodes(uri,limit=1)
 
@@ -66,6 +62,21 @@ for uri in optional_show_uris:
 
 random.shuffle(optional_episode_uri)
 latest_episode_uri += optional_episode_uri
+
 print(latest_episode_uri)
+
+#iterate through previous day's podcasts and remove any duplicates from today.
+# This does open up to issues of cyclic podcasts. Should ideally store all
+# shows every seen by this playlist 
+old = sp.playlist_tracks(playlist_uri)
+old_len = len(old['items'])
+old_tracks = []
+
+for i in range(old_len):
+    old_track_uri = old['items'][i]['track']['uri']
+    try:
+        latest_episode_uri.remove(old_track_uri)
+    except ValueError:
+        pass
 
 sp.playlist_replace_items(playlist_uri, latest_episode_uri)
